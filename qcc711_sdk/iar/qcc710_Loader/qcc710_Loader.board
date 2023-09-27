@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flash_board>
+    <pass>
+        <loader>qcc710_Loader.flash</loader>
+        <range>CODE 0x10210000 0x10277fff</range>
+    </pass>
+</flash_board>

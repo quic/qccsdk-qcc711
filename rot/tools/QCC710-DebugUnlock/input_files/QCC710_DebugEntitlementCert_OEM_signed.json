@@ -1,0 +1,24 @@
+{
+  "EntitlementCertificate" : {
+    "AlgorithmIdentifier" : "ECDSA_P521_SHA512",
+    "CertificateVersion" : "0x00000001",
+    "Entitlements" : {
+      "DebugEntitlement" : {
+        "AuthorizedDebugOptions" : [ "PERSIST_ON_RESET" ],
+        "AuthorizedDebugVector" : "0x58120000000000000000000000000000",
+        "ChipConstraints" : {
+          "SocHardwareVersion" : "0x401802ff",
+          "SocLifeCycleState" : [ "OPERATIONAL_EXT" ]
+        },
+        "InstanceVersion" : "0x00000001",
+        "InstantiationConstraints" : [ "IS_CHIP_UNIQUE_ID_BOUND", "IS_FINGERPRINT_BOUND" ],
+        "PublicKey" : {
+          "CurveIdentifier" : "P-521",
+          "PublicKeyValue" : "0x000000a415fe175941c7c8ec8bf4feae98af748eda42fbd5cd2ea2e46e18fec447dbb719571edf3cc0bbdcc18ad2eda9b39b63d17ad861c4fc0703f6cdac600f16385366000000327a57bcf6e1a342cff68ee79607360bb17f9955c7f26a33ef8a6bcf07b283a938cffda99a5ab99bb52bbd86223df0a5ffc28491059e4ec125d765bca296bb93f6"
+        }
+      }
+    },
+    "KeyIdentifier" : "QTI_ENTITLEMENT_ROOT_KID",
+    "Signature" : "0x000000a332079a803233ed49e5221f7d03038a80efceef9098c8facb3a81d2137356aeed5285f4d4db9ebcf8a3c1c90f8dad1e0909cefeb13020596d0c6d3cd287a4b556000001d3a49feddc88cc17aee1e0837018e489f3c3055db40f8c59f343bc78df0bdb7b4489c50b909eef0e303ba6128b09020b523fce0d9602794912949c357b90deedb4"
+  }
+}

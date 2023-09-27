@@ -1,0 +1,20 @@
+{
+  "CertificateVersion": 1,
+  "KeyIdentifier": "OEM_ENTITLEMENT_ROOT_KID",
+  "AlgorithmIdentifier": "ECDSA_P521_SHA512",
+  "Entitlements": {
+    "OemRootEntitlement": {
+      "InstanceVersion": 1,
+      "Attributes": [
+        "IS_DELEGATE_K_TEST"
+      ],
+      "ChipConstraints": {
+        "RootKeysetVersion": 1
+      },
+      "InstantiationConstraints": [
+        "IS_OEM_RC_HASH_BOUND",
+        "IS_FINGERPRINT_BOUND"
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+[FILEFORMAT]
+rev=1.6
+
+[CHIP]
+name=qcc710
+endiansupport=le
+thumbsupport=true
+armsupport=false
+fpu=None
+SIMD=false
+
+JTAG=flase
+RTCK=false
+SWD=true
+SWO_TraceD0=false
+SWO_clock=32.0
+
+[CORE]
+name=Cortex-M3
+
+[FLASH LOADER]
+little=$PROJ_DIR$\qcc710_Loader\qcc710_Loader.board
+

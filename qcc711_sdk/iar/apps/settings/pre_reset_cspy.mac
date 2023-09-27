@@ -1,0 +1,15 @@
+//Execute SoC reset before the Debugger begins (after download)
+execUserSetup()
+{
+   __writeMemory32(0x5A5A0100, 0x50006828, "Memory");                   // HWIO_AON_PME_APPS_RESET_ADDR
+
+   __hwReset(0);                                                        // Halt CPU on reset
+}
+
+// Execute SoC reset before the APSS is reset via Debugger
+execUserPreReset()
+{
+   __writeMemory32(0x5A5A0100, 0x50006828, "Memory");                   // HWIO_AON_PME_APPS_RESET_ADDR
+
+   __hwReset(0);                                                        // Halt CPU on reset
+}

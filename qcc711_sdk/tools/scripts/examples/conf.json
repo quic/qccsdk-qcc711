@@ -1,0 +1,37 @@
+{
+    "otp_config":
+    {
+        "otp_mtp_values":
+        {
+            "OEM_MRC_HASH"         : "0x123456789ABCDEF0",
+			"OEM_ID"               : "0x1",
+			"OEM_PRODUCT_SEED"     : "0x123456789ABCDEF0"
+        },
+
+        "secure_file"              : "secure_otp.bin"
+    },
+
+    "image_config":
+    {
+        "non_secure_config":
+        {
+            "image"                : "update_apss_unlicense.bin",
+            "address"              : "0x10240000",
+            "update"               : "True"
+        },
+        
+        "secure_config":
+        {
+            "secure_image"         : "encrypted_update_apss.bin",
+            "address"              : "0x10240000",
+            "baudrate"             : 115200,
+            "secure_loader_update" : "update_secure_loader.bin"
+        }
+    },
+    
+    "user_config":
+    {
+        "image"                    : "user_config.bin",
+        "address"                  : "0x1023F000"
+    }
+}

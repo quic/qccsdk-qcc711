@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<flash_device>
+  <exe>qcc710_Loader.out</exe>
+  <flash_base>0x10210000</flash_base>
+  <page>8</page>
+  <block>832 0x200</block>
+  <macro>qcc710_Loader.mac</macro>
+</flash_device>

@@ -1,0 +1,12 @@
+{
+  "entity_dev_fact_prov_key" : "568e2f90ae618ab6b4d9c11678c8923c617a01f46e62720d32b63789c70b4907",
+  "oem_batch_secret" : "f0f0a5a5f0f0a5a5f0f0a5a5f0f0a5a5",
+  "KDFContext" : {
+    "chip_unique_id"       : "78563412ffff0000",
+    "oem_id"               : 18,
+    "oem_product_id"       : "0000",
+    "oem_product_seed"     : "f0f0a5a5f0f0a5a5f0f0a5a5f0f0a5a5",
+    "oem_lcs"              : 0,
+    "is_oem_lcs_activated" : false
+  }
+}

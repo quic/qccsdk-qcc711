@@ -1,0 +1,42 @@
+# ===============================================================================
+# Copyright (c) 2021 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+# ===============================================================================
+#  
+#   This document contains examples for the key.json file used with encrypt_file.py.
+#
+#    KeyType (Mandatory)
+#        Two key types you can select.
+#  		     Derived  
+#  		     Static   
+#
+#	 OemBatchSecret (Mandatory for Derived KeyType)
+#	     Value designated by customer(MAX size: 128-bit hex number).
+#
+#    Nonce (Optional)
+#        Only used in Derived KeyType.Value designated by customer(MAX size: 128-bit hex number).if not designated, "Nonce" value would be a 16 Bytes random number.
+#
+#    Label (Optional)
+#        Only used in Derived KeyType.Value designated by customer(MAX size: 32 characters).if not designated, "Label" value would be a null string("").
+#
+#    KeyId (Mandatory for Static KeyType)
+#        ID of Key field.
+#
+#    Key (Mandatory for Static KeyType)    
+#        Fixed Key specified by APSS(MAX size: 128-bit hex number).
+
+Example1:
+{
+    "KeyType":"Derived",
+    "OemBatchSecret":"0x123456789ABCDEF0",
+    "Nonce":"0x123456789ABCDEF0",
+    "Label":"ABCDEFGHIJKLMNOPabcdefghijklmnop"
+}
+
+Example2:
+{
+    "KeyType":"Static",
+    "KeyId":"1",
+    "Key":"0x123456789ABCDEF0"
+}

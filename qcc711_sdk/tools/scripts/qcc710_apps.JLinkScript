@@ -1,0 +1,18 @@
+int ConfigTargetSettings(void) {
+  JLINK_ExecCommand("SetSWDTargetId=0x001830E1"); // 28-bit target ID
+  JLINK_ExecCommand("SetSWDInstanceId=0x0"); // 4-bit instance ID
+
+  JLINK_CORESIGHT_AddAP(0, CORESIGHT_AHB_AP);                           // APSS Core
+  JLINK_CORESIGHT_AddAP(1, CORESIGHT_AHB_AP);                           // BTSS Core
+  JLINK_CORESIGHT_AddAP(4, CORESIGHT_APB_AP);                           // RoT Core
+
+  CORESIGHT_IndexAHBAPToUse = 0;                                        // Connect to APSS
+
+  return(0);
+}
+
+int InitTarget(void) {
+  JLINK_MEM_WriteU32(0x50006828, 0x5A5A0100);                           // HWIO_AON_PME_APPS_RESET_ADDR
+
+  return(0);
+}

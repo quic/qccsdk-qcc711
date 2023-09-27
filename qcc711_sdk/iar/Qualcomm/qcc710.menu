@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>QCC710</tag>
+  <display>QCC710</display>
+  <data>$CUR_DIR$\QCC710.i79</data>
+</optionMenuItem>
+

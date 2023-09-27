@@ -1,0 +1,88 @@
+/*
+ * Copyright (c) 2020-2021 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ * NOT A CONTRIBUTION
+ */
+
+/*###ICF### Section handled by ICF editor, don't touch! ****/
+/*-Editor annotation file-*/
+/* IcfEditorFile="icfeditor.xml" */
+/*-Specials-*/
+define symbol __ICFEDIT_intvec_start__ = 0x20010000;
+/*-Memory Regions-*/
+define symbol __ICFEDIT_region_ROM_start__          = 0x2001A000;
+define symbol __ICFEDIT_region_ROM_end__            = 0x2001FFFF;
+define symbol __ICFEDIT_region_retn_RAM_start__     = 0x20010400;
+define symbol __ICFEDIT_region_retn_RAM_end__       = 0x200107FF;
+define symbol __ICFEDIT_region_main_RAM_start__     = 0x20010800;
+define symbol __ICFEDIT_region_main_RAM_end__       = 0x20011FFF;
+define symbol __ICFEDIT_region_loader_RAM_start__   = 0x20012000;
+define symbol __ICFEDIT_region_loader_RAM_end__     = 0x20019FFF;
+/*-Sizes-*/
+define symbol __ICFEDIT_size_cstack__      = 0x400;
+define symbol __ICFEDIT_size_proc_stack__  = 0x0;
+define symbol __ICFEDIT_size_retn_heap__   = 0x200;
+define symbol __ICFEDIT_size_main_heap__   = 0xC00;
+/**** End of ICF editor section. ###ICF###*/
+
+define symbol __intvec_start__      = 0x20010000;
+define symbol __retn_rw_start__     = __ICFEDIT_region_retn_RAM_start__;
+define symbol __retn_rw_end__       = __ICFEDIT_region_retn_RAM_end__ - __ICFEDIT_size_retn_heap__;
+define symbol __retn_heap_start__   = __retn_rw_end__ + 1;
+define symbol __retn_heap_end__     = __ICFEDIT_region_retn_RAM_end__;
+define symbol __main_rw_start__     = __ICFEDIT_region_main_RAM_start__;
+define symbol __main_rw_end__       = __ICFEDIT_region_main_RAM_end__ - __ICFEDIT_size_main_heap__;
+define symbol __main_heap_start__   = __main_rw_end__ + 1;
+define symbol __main_heap_end__     = __ICFEDIT_region_main_RAM_end__;
+define symbol __loader_start__      = __ICFEDIT_region_loader_RAM_start__;
+define symbol __laoder_end__        = __ICFEDIT_region_loader_RAM_end__;
+
+define memory mem with size = 4G;
+
+define region ROM_region         = mem:[from __ICFEDIT_region_ROM_start__ to __ICFEDIT_region_ROM_end__];
+
+define region retn_BSS_region    = mem:[from __retn_rw_start__   to __retn_rw_end__];
+define region retn_heap_region   = mem:[from __retn_heap_start__ to __retn_heap_end__];
+define region main_BSS_region    = mem:[from __main_rw_start__   to __main_rw_end__];
+define region main_heap_region   = mem:[from __main_heap_start__ to __main_heap_end__];
+define region loader_region      = mem:[from __loader_start__ to __laoder_end__];
+
+define block CSTACK      with alignment = 8, size = __ICFEDIT_size_cstack__ { };
+define block PROC_STACK  with alignment = 8, size = __ICFEDIT_size_proc_stack__ { };
+define block RETN_HEAP   with alignment = 8, size = __ICFEDIT_size_retn_heap__ { };
+define block MAIN_HEAP   with alignment = 8, size = __ICFEDIT_size_main_heap__ { };
+
+place at start of loader_region { section LOWEND };
+place at end of loader_region { section HIGHSTART };
+
+do not initialize { readwrite section .bss.retain };
+initialize by copy { readwrite };
+do not initialize { section .noinit };
+
+place at address mem:__intvec_start__ { ro section .intvec };
+
+/* Retained RAM objects. */
+/*define block retn_RAM_RW_BLOCK
+{
+   rw section .bss.retain
+};*/
+
+place in ROM_region { ro };
+place in retn_BSS_region { section .bss.retain };
+place in retn_heap_region { block RETN_HEAP };
+place in main_BSS_region { rw };
+place in main_BSS_region { zi };
+place in main_BSS_region { block CSTACK, block PROC_STACK };
+place in main_heap_region { block MAIN_HEAP };
+
+/* Export symbols.  */
+define exported symbol __RetnBssStart = start(retn_BSS_region);
+define exported symbol __RetnBssEnd = end(retn_BSS_region);
+define exported symbol __RetnHeapStart = start(retn_heap_region);
+define exported symbol __RetnHeapEnd = end(retn_heap_region);
+define exported symbol __RetnRAMStart = __RetnBssStart;
+define exported symbol __RetnRAMEnd = __RetnHeapEnd;
+define exported symbol __MainHeapStart = start(main_heap_region);
+define exported symbol __MainHeapEnd = end(main_heap_region);
+

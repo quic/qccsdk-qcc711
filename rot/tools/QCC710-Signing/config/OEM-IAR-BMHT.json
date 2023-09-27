@@ -1,0 +1,22 @@
+{
+  "SvcImageAuthentication" : {
+    "CmdMinorVersion" : "0x1",
+    "CmdMajorVersion" : "0x1",
+    "CmdSigningAlgorithmId" : "ECDSA_P521_SHA512",
+    "ImageDescriptor" : {
+      "SecurityVersion" : 1,
+      "SoftwareComponentIdentifier" : "TME_SIGNED_CMD_SWID",
+      "MeasurementRegisterTarget" : "NA",
+      "HashValues" : {
+        "AlgorithmIdentifier" : "SHA_512",
+        "HashArray" : ""
+      },
+      "ChipConstraints": {
+        "OemRcHash" : {
+          "AlgorithmIdentifier" : "SHA_512",
+          "HashArray" : "24c92948f23b38f6d609cb07a1429e431f56a749cf2b2acd083e5a2bf787fc9132ef3c4166d09d248c2ee5441d16216fdb3d517413d822f009e1995e04475471"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+/*
+ * Copyright (c) 2020-2022 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ * NOT A CONTRIBUTION
+ */
+
+/*###ICF### Section handled by ICF editor, don't touch! ****/
+/*-Editor annotation file-*/
+/* IcfEditorFile="icfeditor.xml" */
+/*-Specials-*/
+define symbol __ICFEDIT_intvec_start__ = 0x00000000;
+/*-Memory Regions-*/
+define symbol __ICFEDIT_region_ROM_start__        = 0x10210000;
+define symbol __ICFEDIT_region_ROM_end__          = 0x10277FFF;
+define symbol __ICFEDIT_region_retn_RAM_start__   = 0x20010000;
+define symbol __ICFEDIT_region_retn_RAM_end__     = 0x20013FFF;
+define symbol __ICFEDIT_region_main_RAM_start__   = 0x20014000;
+define symbol __ICFEDIT_region_main_RAM_end__     = 0x2001EFFF;
+define symbol __ICFEDIT_region_shared_RAM_start__ = 0x2001F800;
+define symbol __ICFEDIT_region_shared_RAM_end__   = 0x2001FFFF;
+/*-Sizes-*/
+define symbol __ICFEDIT_size_cstack__      = 0x600;
+define symbol __ICFEDIT_size_proc_stack__  = 0x0;
+define symbol __ICFEDIT_size_retn_heap__   = 0xC00;
+define symbol __ICFEDIT_size_main_heap__   = 0x2400;
+define symbol __ICFEDIT_size_shared_info__ = 0x10;
+define symbol __ICFEDIT_size_intvec__      = 0x9C;
+/**** End of ICF editor section. ###ICF###*/
+
+define symbol __intvec_start__      = __ICFEDIT_region_ROM_start__;
+define symbol __intvec_end__        = __ICFEDIT_region_ROM_start__ + __ICFEDIT_size_intvec__;
+define symbol __retn_vect_start__   = __ICFEDIT_region_retn_RAM_start__;
+define symbol __retn_vect_end__     = __ICFEDIT_region_retn_RAM_start__ + __ICFEDIT_size_intvec__;
+define symbol __retn_rw_start__     = __retn_vect_end__ + 1;
+define symbol __retn_rw_end__       = __ICFEDIT_region_retn_RAM_end__ - __ICFEDIT_size_retn_heap__;
+define symbol __retn_heap_start__   = __retn_rw_end__ + 1;
+define symbol __retn_heap_end__     = __ICFEDIT_region_retn_RAM_end__;
+define symbol __main_rw_start__     = __ICFEDIT_region_main_RAM_start__;
+define symbol __main_rw_end__       = __ICFEDIT_region_main_RAM_end__ - __ICFEDIT_size_main_heap__;
+define symbol __main_heap_start__   = __main_rw_end__ + 1;
+define symbol __main_heap_end__     = __ICFEDIT_region_main_RAM_end__;
+define symbol __shared_start__      = __ICFEDIT_region_shared_RAM_start__;
+define symbol __shared_end__        = __ICFEDIT_region_shared_RAM_end__;
+define symbol __btss_info_start__   = 0x2000FFF0;
+define symbol __ipc_ring_ctx_size__ = 0x100;
+define symbol __shared_size__       = __ICFEDIT_region_shared_RAM_end__ - __ICFEDIT_region_shared_RAM_start__ + 1;
+define symbol __ipc_message_size__  = __shared_size__ - __ipc_ring_ctx_size__;
+
+define memory mem with size = 4G;
+
+define region ROM_region         = mem:[from __ICFEDIT_region_ROM_start__ to __ICFEDIT_region_ROM_end__];
+
+define region retn_vect_region   = mem:[from __retn_vect_start__ to __retn_vect_end__];
+define region retn_RW_region    = mem:[from __retn_rw_start__   to __retn_rw_end__];
+define region retn_heap_region   = mem:[from __retn_heap_start__ to __retn_heap_end__];
+define region main_BSS_region    = mem:[from __main_rw_start__   to __main_rw_end__];
+define region main_heap_region   = mem:[from __main_heap_start__ to __main_heap_end__];
+define region shared_buf_region  = mem:[from __shared_start__ to __shared_end__];
+
+define block RETN_VECT   with alignment = 128, size = __ICFEDIT_size_intvec__ { };
+define block CSTACK      with alignment = 8, size = __ICFEDIT_size_cstack__ { };
+define block PROC_STACK  with alignment = 8, size = __ICFEDIT_size_proc_stack__ { };
+define block RETN_HEAP   with alignment = 8, size = __ICFEDIT_size_retn_heap__ { };
+define block MAIN_HEAP   with alignment = 8, size = __ICFEDIT_size_main_heap__ { };
+define block SHARED_BUF  with alignment = 8, size = __shared_size__ { };
+
+do not initialize { readwrite section .bss.retain };
+initialize manually with packing=none { section .retained.text };
+initialize by copy { readwrite };
+do not initialize { section .noinit };
+
+place at address mem:__intvec_start__ { ro section .intvec };
+
+/* Retained RAM objects. */
+/*define block retn_RAM_RW_BLOCK
+{
+   rw section .bss.retain
+};*/
+
+place in ROM_region { ro };
+place at start of retn_vect_region { block RETN_VECT };
+place in retn_RW_region { section .bss.retain };
+place in retn_RW_region { section .retained.text };
+place in retn_heap_region { block RETN_HEAP };
+place in main_BSS_region { rw };
+place in main_BSS_region { zi };
+place in main_BSS_region { block CSTACK, block PROC_STACK };
+place in main_heap_region { block MAIN_HEAP };
+place in shared_buf_region { block SHARED_BUF };
+
+/* Export symbols.  */
+define exported symbol __RomStart = start(ROM_region);
+define exported symbol __RamVectStart = start(retn_vect_region);
+define exported symbol __RamVectSize = size(retn_vect_region);
+define exported symbol __VectorTableStart = start(ROM_region);
+define exported symbol __VectorTableEnd = start(ROM_region) + __ICFEDIT_size_intvec__;
+define exported symbol __RetnHeapStart = start(retn_heap_region);
+define exported symbol __RetnHeapEnd = end(retn_heap_region);
+define exported symbol __RetnRAMStart = __RamVectStart;
+define exported symbol __RetnRAMEnd = __RetnHeapEnd;
+define exported symbol __MainHeapStart = start(main_heap_region);
+define exported symbol __MainHeapEnd = end(main_heap_region);
+define exported symbol __IPC_MessageStart = start(shared_buf_region);
+define exported symbol __IPC_MessageEnd = start(shared_buf_region) + __ipc_message_size__;
+define exported symbol __IPC_SharedStart = start(shared_buf_region) + __ipc_message_size__;
+define exported symbol __IPC_SharedEnd = end(shared_buf_region);
+define exported symbol __IPC_APSS_InfoStart = end(shared_buf_region) - __ICFEDIT_size_shared_info__ + 1;
+define exported symbol QIPC_TxData = __IPC_APSS_InfoStart;
+define exported symbol QIPC_RxData = __btss_info_start__;
+

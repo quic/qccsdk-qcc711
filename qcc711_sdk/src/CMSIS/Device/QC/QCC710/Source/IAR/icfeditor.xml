@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<icf_annotations version="1.0">
+  <tab name="Memory Regions">
+    <itemHeaders>
+      <header>Start:</header>
+      <header>End:</header>
+    </itemHeaders>
+    <item name="ROM" type="Range">
+      <symbol_1>__ICFEDIT_region_ROM_start__</symbol_1>
+      <symbol_2>__ICFEDIT_region_ROM_end__</symbol_2>
+      <tooltip_1>The start address of the ROM region</tooltip_1>
+      <tooltip_2>The end address of the ROM region</tooltip_2>
+    </item>
+    <item name="RETN RAM" type="Range">
+      <symbol_1>__ICFEDIT_region_retn_RAM_start__</symbol_1>
+      <symbol_2>__ICFEDIT_region_retn_RAM_end__</symbol_2>
+      <tooltip_1>The start address of the retained RAM region</tooltip_1>
+      <tooltip_2>The end address of the retained RAM region</tooltip_2>
+    </item>
+    <item name="MAIN RAM" type="Range">
+      <symbol_1>__ICFEDIT_region_main_RAM_start__</symbol_1>
+      <symbol_2>__ICFEDIT_region_main_RAM_end__</symbol_2>
+      <tooltip_1>The start address of the main RAM region</tooltip_1>
+      <tooltip_2>The end address of the main RAM region</tooltip_2>
+    </item>
+  </tab>
+
+  <tab name="Stack/Heap Sizes">
+    <item name="STACK" type="Number">
+      <symbol>__ICFEDIT_size_cstack__</symbol>
+      <tooltip>The size of the main stack</tooltip>
+    </item>
+    <item name="PROC_STACK" type="Number">
+      <symbol>__ICFEDIT_size_proc_stack__</symbol>
+      <tooltip>The size of the process stack</tooltip>
+    </item>
+    <item name="RETN HEAP" type="Number">
+      <symbol>__ICFEDIT_size_retn_heap__</symbol>
+      <tooltip>The size of the main heap</tooltip>
+    </item>
+    <item name="MAIN HEAP" type="Number">
+      <symbol>__ICFEDIT_size_main_heap__</symbol>
+      <tooltip>The size of the main heap</tooltip>
+    </item>
+  </tab>
+</icf_annotations>
+

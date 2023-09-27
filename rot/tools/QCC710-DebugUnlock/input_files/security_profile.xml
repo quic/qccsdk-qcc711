@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:profile xmlns:tns="http://www.qualcomm.com/sectools"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="ZIGGY ROT PBL"
+             minimum_sectools_version="1.0"
+             schema_version="1.2"
+             xsi:schemaLocation="http://www.qualcomm.com/sectools ../../../schema/v1_2/profile_1_2.xsd">
+
+    <platform_binding_values>
+        <soc_hw_versions>
+            <value>0x4018</value>
+        </soc_hw_versions>
+        <jtag_ids>
+            <value variant="VARIANT-1">0x001890E1</value>
+            <value variant="VARIANT-2">0x0002</value>
+            <value variant="VARIANT-3">0x0003</value>
+        </jtag_ids>
+        <soc_feature_ids>
+            <value variant="VARIANT-1">0x0001</value>
+            <value variant="VARIANT-2">0x0002</value>
+        </soc_feature_ids>
+    </platform_binding_values>
+
+     <authentication>
+        <image_list>
+        <image id="DEBUG-POLICY" authenticator_oem="ROT-PBL">
+                <sw_id>0x00000200</sw_id>
+            </image>
+        </image_list>
+        <authenticators>
+            <authenticator id="ROT-PBL">
+                <default_image_format>ELF-V7</default_image_format>
+                <supported_image_formats>
+                    <image_format id="ELF-V7">
+                        <file_type>ELF</file_type>
+                        <elf_properties>
+                            <elf_class>
+                                <default_elf_class>32</default_elf_class>
+                                <supported_elf_classes>
+                                    <value>32</value>
+                                    <value>64</value>
+                                </supported_elf_classes>
+                            </elf_class>
+                            <contains_preamble>false</contains_preamble>
+                        </elf_properties>
+                        <hash_table_segment_properties>
+                            <hash_table_segment_placements>
+                                <default_hash_table_segment_placement>START</default_hash_table_segment_placement>
+                                <supported_hash_table_segment_placements>
+                                    <value>ANY</value>
+                                </supported_hash_table_segment_placements>
+                            </hash_table_segment_placements>
+                            <hash_table_segment_alignment>0x1000</hash_table_segment_alignment>
+                            <hash_pages>false</hash_pages>
+                            <segment_hash_algorithms>
+                                <default_segment_hash_algorithm>SHA384</default_segment_hash_algorithm>
+                                <supported_segment_hash_algorithms>
+                                    <value>SHA384</value>
+                                </supported_segment_hash_algorithms>
+                            </segment_hash_algorithms>
+                            <hash_table_segment_version>7</hash_table_segment_version>
+                            <hash_table_segment_metadata_versions>
+                                <default_hash_table_segment_metadata_version>2.0</default_hash_table_segment_metadata_version>
+                                <supported_hash_table_segment_metadata_versions>
+                                    <value>2.0</value>
+                                </supported_hash_table_segment_metadata_versions>
+                            </hash_table_segment_metadata_versions>
+                            <hash_table_segment_common_metadata_versions>
+                                <default_hash_table_segment_common_metadata_version>0.0</default_hash_table_segment_common_metadata_version>
+                                <supported_hash_table_segment_common_metadata_versions>
+                                    <value>0.0</value>
+                                </supported_hash_table_segment_common_metadata_versions>
+                            </hash_table_segment_common_metadata_versions>
+                        </hash_table_segment_properties>
+                    </image_format>
+                </supported_image_formats>
+                <supported_oem_signing_features>
+                    <supports_vouch_for>true</supports_vouch_for>
+                    <default_signature_format>ECDSA384</default_signature_format>
+                    <signature_formats>
+                        <signature_format id="ECDSA384">
+                            <signature_algorithm>ECDSA</signature_algorithm>
+                            <signature_hash_algorithms>
+                                <default_signature_hash_algorithm>SHA384</default_signature_hash_algorithm>
+                                <supported_signature_hash_algorithms>
+                                    <value>SHA384</value>
+                                </supported_signature_hash_algorithms>
+                            </signature_hash_algorithms>
+                            <ecdsa_curves>
+                                <default_ecdsa_curve>SECP384R1</default_ecdsa_curve>
+                                <supported_ecdsa_curves>
+                                    <value>SECP384R1</value>
+                                </supported_ecdsa_curves>
+                            </ecdsa_curves>
+                        </signature_format>
+                        <signature_format id="RSA256">
+                            <signature_algorithm>RSA</signature_algorithm>
+                            <signature_hash_algorithms>
+                                <default_signature_hash_algorithm>SHA256</default_signature_hash_algorithm>
+                                <supported_signature_hash_algorithms>
+                                    <value>SHA256</value>
+                                </supported_signature_hash_algorithms>
+                            </signature_hash_algorithms>
+                            <exponents>
+                                <default_exponent>65537</default_exponent>
+                                <supported_exponents>
+                                    <value>65537</value>
+                                </supported_exponents>
+                            </exponents>
+                            <key_sizes>
+                                <default_key_size>2048</default_key_size>
+                                <supported_key_sizes>
+                                    <value>2048</value>
+                                    <value>4096</value>
+                                </supported_key_sizes>
+                            </key_sizes>
+                            <rsa_paddings>
+                                <default_rsa_padding>PSS</default_rsa_padding>
+                                <supported_rsa_paddings>
+                                    <value>PSS</value>
+                                </supported_rsa_paddings>
+                            </rsa_paddings>
+                        </signature_format>
+                    </signature_formats>
+                    <serial_bind>
+                        <supported>true</supported>
+                        <supports_single_serial>true</supports_single_serial>
+                        <supports_multi_serials>true</supports_multi_serials>
+                    </serial_bind>
+                    <debug>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </debug>
+                    <uie_key_switch_enable>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </uie_key_switch_enable>
+                    <root_revoke_activation_enable>
+                        <supported>true</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </root_revoke_activation_enable>
+                    <supports_root_revoke_activation_enable_as_combined>true</supports_root_revoke_activation_enable_as_combined>
+                    <crash_dump>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </crash_dump>
+                    <certificate_chain_depths>
+                        <default_certificate_chain_depth>3</default_certificate_chain_depth>
+                        <supported_certificate_chain_depths>
+                            <value>2</value>
+                            <value>3</value>
+                        </supported_certificate_chain_depths>
+                    </certificate_chain_depths>
+                    <platform_bindings>
+                        <supports_multiple_soc_ver>true</supports_multiple_soc_ver>
+                        <default_platform_binding>SOC-HW-VER</default_platform_binding>
+                        <supported_platform_bindings>
+                            <value>SOC-HW-VER</value>
+                            <value>JTAG-ID</value>
+                        </supported_platform_bindings>
+                    </platform_bindings>
+                    <supports_oem_id_product_id_independent>true</supports_oem_id_product_id_independent>
+                    <supports_anti_rollback_version>true</supports_anti_rollback_version>
+                    <requires_secondary_software_id>false</requires_secondary_software_id>
+                    <requires_feature_id>false</requires_feature_id>
+                    <supported_oem_lifecycle_states>
+                            <value>DEVELOPMENT</value>
+                            <value>PRODUCTION</value>
+                    </supported_oem_lifecycle_states>
+                    <mrc_specs>
+                        <default_mrc_spec>2.0</default_mrc_spec>
+                        <supported_mrc_specs>
+                            <value>2.0</value>
+                        </supported_mrc_specs>
+                    </mrc_specs>
+                </supported_oem_signing_features>
+            </authenticator>
+        </authenticators>
+    </authentication>
+
+   <debugging>
+        <tme>
+            <image_id>DEBUG-POLICY</image_id>
+            <tme_version>1</tme_version>
+            <command_version>1.0</command_version>
+            <oem_debug_policy_format>TME</oem_debug_policy_format>
+            <tme_elf_properties>
+                <phy_addr>0x1027EE00</phy_addr>
+                <elf_classes>
+                    <default_elf_class>32</default_elf_class>
+                    <supported_elf_classes>
+                        <value>32</value>
+                        <value>64</value>
+                    </supported_elf_classes>
+                </elf_classes>
+                <dpr_segment_placements>
+                    <default_dpr_segment_placement>START</default_dpr_segment_placement>
+                    <supported_dpr_segment_placements>
+                        <value>ANY</value>
+                    </supported_dpr_segment_placements>
+                </dpr_segment_placements>
+                <dpr_segment_alignment>0x1000</dpr_segment_alignment>
+            </tme_elf_properties>
+            <seq_signing_algorithms>
+                <default_seq_signing_algorithm>ECDSA_P521_SHA512</default_seq_signing_algorithm>
+                <supported_seq_signing_algorithms>
+                    <value>ECDSA_P384_SHA384</value>
+                    <value>ECDSA_P521_SHA512</value>
+                </supported_seq_signing_algorithms>
+            </seq_signing_algorithms>
+            <test_signed_image_hash_algorithms>
+                <default_test_signed_image_hash_algorithm>SHA384</default_test_signed_image_hash_algorithm>
+                <supported_test_signed_image_hash_algorithms>
+                    <value>SHA384</value>
+                    <value>SHA512</value>
+                </supported_test_signed_image_hash_algorithms>
+            </test_signed_image_hash_algorithms>
+            <seq_test_signed_image_hash_algorithms>
+                <default_test_signed_image_hash_algorithm>SHA384</default_test_signed_image_hash_algorithm>
+                <supported_test_signed_image_hash_algorithms>
+                    <value>SHA384</value>
+                    <value>SHA512</value>
+                </supported_test_signed_image_hash_algorithms>
+            </seq_test_signed_image_hash_algorithms>
+            <fingerprint_hash_algorithms>
+                <default_fingerprint_hash_algorithm>SHA384</default_fingerprint_hash_algorithm>
+                <supported_fingerprint_hash_algorithms>
+                    <value>SHA384</value>
+                    <value>SHA512</value>
+                </supported_fingerprint_hash_algorithms>
+            </fingerprint_hash_algorithms>
+            <supported_oem_rch_algorithms>
+                <value>SHA384</value>
+            </supported_oem_rch_algorithms>
+            <supported_oem_crash_dump_curves>
+                <value>SECP384R1</value>
+            </supported_oem_crash_dump_curves>
+            <debug_vector>
+                <debug_vector_option id="AHB_SYSFABRIC_DBGEN">
+                    <bit>3</bit>
+                    <description>Enable AHB_SYSFABRIC_DBGEN feature.</description>
+                </debug_vector_option>
+                <debug_vector_option id="DEBUG_MODULE_DBGEN">
+                    <bit>4</bit>
+                    <description>Enable DEBUG_MODULE_DBGEN feature.</description>
+                </debug_vector_option>
+                <debug_vector_option id="APPS_DBGEN">
+                    <bit>6</bit>
+                    <description>Enable APPS_DBGEN feature.</description>
+                </debug_vector_option>
+                <debug_vector_option id="APPS_AON_DBGEN">
+                    <bit>9</bit>
+                    <description>Enable AON register access debug for APPS.</description>
+                </debug_vector_option>
+                <debug_vector_option id="APPS_WATCHDOG_DBGEN">
+                    <bit>12</bit>
+                    <description>Disable Apps watchdog chip reset on bite.</description>
+                </debug_vector_option>
+            </debug_vector>
+            <subsystems>
+                <subsystem id="CPUCP_SS_SWID">
+                    <supported_debug_options>
+                    </supported_debug_options>
+                </subsystem>
+            </subsystems>
+            <allowed_test_signed_images>
+                <value>CPUCP_SS_SWID</value>
+            </allowed_test_signed_images>
+            <allowed_test_signed_images_vector>
+                <value>CPUCP_SS_SWID</value>
+            </allowed_test_signed_images_vector>
+            <limits>
+                <tag pointer="/SvcDebugPolicy/EntitlementCertificate/Entitlements/DebugEntitlement/AuthorizedDebugVector">
+                    <byte_size>16</byte_size>
+                </tag>
+                <tag pointer="/SvcDebugPolicy/EntitlementCertificate/Entitlements/DebugEntitlement/AuthorizedTestSignedImageVector">
+                    <byte_size>8</byte_size>
+                </tag>
+                <tag pointer="/SvcDebugPolicy/DebugPolicyData/DebugVector">
+                    <byte_size>16</byte_size>
+                </tag>
+                <tag pointer="/SvcDebugPolicy/DebugPolicyData/TestSignedImageVector">
+                    <byte_size>8</byte_size>
+                </tag>
+                <tag pointer="/SvcDebugPolicy/DebugPolicyData/OemTestRootCaHashValues">
+                    <max_hash_array_length>4</max_hash_array_length>
+                </tag>
+                <tag pointer="/SvcDebugPolicy/DebugPolicyData/ChipConstraints/OemBatchKeyHash">
+                    <not_used/>
+                </tag>
+            </limits>
+        </tme>
+    </debugging>
+
+</tns:profile>

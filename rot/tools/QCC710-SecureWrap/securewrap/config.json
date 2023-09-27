@@ -1,0 +1,11 @@
+
+{
+  "entity_dev_fact_prov_key" : "4d98ff3e037eb574256434560ffa0778099d7cfac47cf5e42a2ec58fb24a0c8e",
+  "oem_batch_secret" : "44e4d455369676e61747572654b65795",
+  "batch_secret_wrapping_key" : "021f23aff0dcbe4bd411d1f4f92ec5eb54c25d0b6484df339104688728c5fc44",
+  "NISTKDFContext" : {
+    "oem_product_seed"     : "f0f0a5a5f0f0a5a5f0f0a5a5f0f0a5a5",
+    "is_oem_lcs_activated" : true,
+    "oem_lcs"              : 2
+   }  
+}

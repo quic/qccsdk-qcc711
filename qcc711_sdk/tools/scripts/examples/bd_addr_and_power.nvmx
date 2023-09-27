@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NVM xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FORMAT_VERSION>1</FORMAT_VERSION>
+  <ChangeSummary>Advertising and Scan Request Power Level Index 2 to 1, BD_ADDR = 0xBAADBAADF00D</ChangeSummary>
+  <TAGS>
+    <TAG Name="Bluetooth Address">
+      <ELEMENTS Name="BD Address">
+        <ELEMENTS Name="Byte_0" Value="0xD" />
+        <ELEMENTS Name="Byte_1" Value="0xF0" />
+        <ELEMENTS Name="Byte_2" Value="0xAD" />
+        <ELEMENTS Name="Byte_3" Value="0xBA" />
+        <ELEMENTS Name="Byte_4" Value="0xAD" />
+        <ELEMENTS Name="Byte_5" Value="0xBA" />
+      </ELEMENTS>
+    </TAG>
+    <TAG Name="LE Tx Power Configuration">
+      <ELEMENTS Name="LE Power Configuration">
+        <ELEMENTS Name="Advertising Power Level Index" Value="0x1" />
+        <ELEMENTS Name="Scan Request Power Level Index" Value="0x1" />
+        <ELEMENTS Name="Connection Power Level Index" Value="0x2" />
+        <ELEMENTS Name="MultiAdvTxPower_min" Value="0x0" />
+        <ELEMENTS Name="MultiAdvTxPower_low" Value="0x0" />
+        <ELEMENTS Name="MultiAdvTxPower_mid" Value="0x1" />
+        <ELEMENTS Name="MultiAdvTxPower_high" Value="0x2" />
+        <ELEMENTS Name="MultiAdvTxPower_max" Value="0x2" />
+      </ELEMENTS>
+    </TAG>
+  </TAGS>
+</NVM>
