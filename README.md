@@ -2,7 +2,7 @@
 
 QCC711 is a qualcomm brand wireless MCU chip which combines BLE5.4/rich peripheral interfaces and security function.
 
-The SDK provides CLI based demos, APSS System/driver APIs, BLE&Security APIs, BTSS patchand Security patch Binaries.
+The SDK provides CLI based demos, APSS System/driver APIs, BLE&Security APIs, BTSS patch and Security patch Binaries.
 it also provides the tools to program the chip.
 
 
