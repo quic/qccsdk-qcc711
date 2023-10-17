@@ -14,7 +14,7 @@ Prerequisites
         - Install "argparse" using "pip install argparse==1.4.0"
         - Install QCOM internal package "pydbg-core" (Applicable for JLink based
         testing only) using
-        "pip install -r pydbg-qcc710\requirements.txt"
+        "pip install -i https://devpi.qualcomm.com/qtil/rel pydbg-core"
 
 ================================================================================
 Contents
